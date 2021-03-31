@@ -1,8 +1,5 @@
 package leetcode;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 /**
  * 1299. Replace Elements with Greatest Element on Right Side (https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/)
  */
@@ -13,22 +10,18 @@ public class ReplaceElementsWithGreatestElementOnRightSide {
             return arr;
         }
 
-        int length = arr.length;
-        for (int i = 0; i < length - 1; i++) {
-            int maxVal = 0;
-            for (int j = i + 1; j < length; j++) {
-                maxVal = Math.max(maxVal, arr[j]);
-            }
+        int maxVal = -1;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int temp = arr[i];
             arr[i] = maxVal;
+            maxVal = Math.max(maxVal, temp);
         }
-
-        arr[length - 1] = -1;
 
         return arr;
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4};
+        int[] arr = {17, 18, 5, 4, 6, 1};
         int[] ints = new ReplaceElementsWithGreatestElementOnRightSide()
                 .replaceElements(arr);
         for (int anInt : ints) {
