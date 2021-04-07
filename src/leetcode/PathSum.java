@@ -9,27 +9,12 @@ public class PathSum {
             return false;
         }
 
-        return hasPathSum(root, targetSum, 0);
-    }
-
-    private boolean hasPathSum(TreeNode root, int targetSum, int sum) {
-        sum += root.val;
-        if (root.left == null && root.right == null) {
-            if (targetSum == sum) {
-                return true;
-            }
-            return false;
-        }
-
-        if (root.left != null && hasPathSum(root.left, targetSum, sum)) {
+        if (root.left == null && root.right == null && targetSum - root.val == 0) {
             return true;
         }
 
-        if (root.right != null && hasPathSum(root.right, targetSum, sum)) {
-            return true;
-        }
-
-        return false;
+        return hasPathSum(root.left, targetSum - root.val)
+                || hasPathSum(root.right, targetSum - root.val);
     }
 
     public static class TreeNode {
