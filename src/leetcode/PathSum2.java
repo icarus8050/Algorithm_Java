@@ -9,34 +9,27 @@ import java.util.List;
 public class PathSum2 {
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> ans = new ArrayList<>();
-        if (root == null) {
-            return ans;
-        }
         pathSum(root, targetSum, ans, new ArrayList<>());
         return ans;
     }
 
     private void pathSum(TreeNode root, int targetSum, List<List<Integer>> ans, List<Integer> path) {
-        if (root.left == null && root.right == null) {
-            if (targetSum - root.val == 0) {
-                List<Integer> tmp = new ArrayList<>(path);
-                tmp.add(root.val);
-                ans.add(tmp);
-            }
+        if (root == null) {
             return;
         }
 
-        if (root.left != null) {
-            path.add(root.val);
+        path.add(root.val);
+
+        if (root.left == null && root.right == null) {
+            if (root.val == targetSum) {
+                ans.add(new ArrayList<>(path));
+            }
+        } else {
             pathSum(root.left, targetSum - root.val, ans, path);
-            path.remove(path.size() - 1);
+            pathSum(root.right, targetSum - root.val, ans, path);
         }
 
-        if (root.right != null) {
-            path.add(root.val);
-            pathSum(root.right, targetSum - root.val, ans, path);
-            path.remove(path.size() - 1);
-        }
+        path.remove(path.size() - 1);
     }
 
     public static class TreeNode {
