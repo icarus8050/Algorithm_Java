@@ -8,22 +8,18 @@ import java.util.List;
  */
 public class BinaryTreePreorderTraversal {
     public List<Integer> preorderTraversal(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
-        ArrayList<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
         preorderTraversal(root, ans);
         return ans;
     }
 
     public void preorderTraversal(TreeNode root, List<Integer> ans) {
+        if (root == null) {
+            return;
+        }
         ans.add(root.val);
-        if (root.left != null) {
-            preorderTraversal(root.left, ans);
-        }
-        if (root.right != null) {
-            preorderTraversal(root.right, ans);
-        }
+        preorderTraversal(root.left, ans);
+        preorderTraversal(root.right, ans);
     }
 
     public class TreeNode {
