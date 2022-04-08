@@ -7,31 +7,42 @@ package leetcode;
 public class FindFirstAndLastPositionOfElementInSortedArray {
     public int[] searchRange(int[] nums, int target) {
         int start = 0;
-        int end = nums.length - 1;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            if (nums[mid] >= target) {
-                end = mid - 1;
-            } else {
-                start = mid + 1;
-            }
-        }
+        int end = nums.length;
+        int foundTargetIdx = -1;
 
-        if (start >= nums.length || nums[start] != target) {
-            return new int[]{-1, -1};
-        }
-
-        int first = start;
-        end = nums.length - 1;
-        while (start <= end) {
+        while (start < end) {
             int mid = (start + end) / 2;
             if (nums[mid] == target) {
+                foundTargetIdx = mid;
+                break;
+            }
+
+            if (nums[mid] < target) {
                 start = mid + 1;
             } else {
-                end = mid - 1;
+                end = mid;
             }
         }
-        return new int[]{first, end};
+
+        start = foundTargetIdx;
+        end = foundTargetIdx;
+        while (start > 0) {
+            if (nums[start - 1] == target) {
+                start--;
+            } else {
+                break;
+            }
+        }
+
+        while (end < nums.length - 1) {
+            if (nums[end + 1] == target) {
+                end++;
+            } else {
+                break;
+            }
+        }
+
+        return new int[]{start, end};
     }
 
     /*
