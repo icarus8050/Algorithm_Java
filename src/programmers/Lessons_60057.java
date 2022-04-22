@@ -3,10 +3,10 @@ package programmers;
 /**
  * 문자열 압축 (https://programmers.co.kr/learn/courses/30/lessons/60057)
  */
-public class StringCompression {
+public class Lessons_60057 {
 
     public static void main(String[] args) {
-        System.out.println(new StringCompression().solution("aabbaccc"));
+        System.out.println(new Lessons_60057().solution("aabbaccc"));
     }
     public int solution(String s) {
         int answer = s.length();
