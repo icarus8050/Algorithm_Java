@@ -21,8 +21,8 @@ public class SpiralMatrix2 {
             direction %= 4;
             if (direction % 2 == 1) cnt--;
             for (int j = 0; j < cnt; j++) {
-                cy = cy + dy[direction];
-                cx = cx + dx[direction];
+                cy += dy[direction];
+                cx += dx[direction];
                 mat[cy][cx] = i++;
             }
             direction++;
