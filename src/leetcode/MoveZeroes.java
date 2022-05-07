@@ -5,22 +5,13 @@ package leetcode;
  */
 public class MoveZeroes {
     public void moveZeroes(int[] nums) {
-        int zeroCnt = 0;
-        int[] result = new int[nums.length];
         int idx = 0;
-
-        for (int num : nums) {
-            if (num == 0) {
-                zeroCnt++;
-            } else {
-                result[idx++] = num;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int temp = nums[idx];
+                nums[idx++] = nums[i];
+                nums[i] = temp;
             }
         }
-
-        while (zeroCnt != 0) {
-            result[idx++] = 0;
-            zeroCnt--;
-        }
-        System.arraycopy(result, 0, nums, 0, nums.length);
     }
 }
