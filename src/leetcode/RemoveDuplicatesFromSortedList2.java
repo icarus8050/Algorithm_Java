@@ -1,8 +1,5 @@
 package leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 82. Remove Duplicates from Sorted List II (https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
  */
@@ -11,26 +8,20 @@ public class RemoveDuplicatesFromSortedList2 {
         if (head == null || head.next == null) {
             return head;
         }
-
-        Map<Integer, Integer> map = new HashMap<>();
         ListNode dummy = new ListNode();
-        ListNode dummyTail = dummy;
+        dummy.next = head;
+        ListNode prev = dummy;
         ListNode current = head;
-        while (head != null) {
-            if (head.val == current.val) {
-                map.compute(current.val, (k, v) -> (v == null) ? 1 : v + 1);
-            } else {
-                if (map.get(current.val) == 1) {
-                    dummyTail.next = new ListNode(current.val);
-                    dummyTail = dummyTail.next;
-                }
-                current = head;
-                map.put(current.val, 1);
+        while (current != null) {
+            while (current.next != null && current.val == current.next.val) {
+                current = current.next;
             }
-            head = head.next;
-        }
-        if (map.get(current.val) == 1) {
-            dummyTail.next = new ListNode(current.val);
+            if (prev.next == current) {
+                prev = prev.next;
+            } else {
+                prev.next = current.next;
+            }
+            current = current.next;
         }
         return dummy.next;
     }
