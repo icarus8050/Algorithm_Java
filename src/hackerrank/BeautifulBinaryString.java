@@ -1,6 +1,10 @@
 package hackerrank;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Beautiful Binary String (https://www.hackerrank.com/challenges/beautiful-binary-string/problem)
@@ -39,4 +43,14 @@ public class BeautifulBinaryString {
         }
         return result;
     }
+
+    // advanced solving
+    /*public static int beautifulBinaryString(String b) {
+        List<String> allMatches = new ArrayList<>();
+        Matcher matcher = Pattern.compile("010").matcher(b);
+        while (matcher.find()) {
+            allMatches.add(matcher.group());
+        }
+        return allMatches.size();
+    }*/
 }
