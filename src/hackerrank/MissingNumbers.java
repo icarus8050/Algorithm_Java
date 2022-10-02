@@ -60,4 +60,19 @@ public class MissingNumbers {
         Collections.sort(result);
         return result;
     }
+
+    // advanced solving
+    /*public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+        Map<Integer, Long> brrMap = brr.stream()
+                .collect(groupingBy(v -> v, counting()));
+
+        arr.stream()
+                .filter(brrMap::containsKey)
+                .forEach(i -> brrMap.put(i, brrMap.get(i) - 1));
+
+        return brrMap.entrySet().stream()
+                .filter(e -> e.getValue() > 0)
+                .map(Map.Entry::getKey)
+                .collect(toList());
+    }*/
 }
