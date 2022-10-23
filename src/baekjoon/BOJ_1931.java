@@ -13,7 +13,7 @@ public class BOJ_1931 {
 
         int n = Integer.parseInt(br.readLine());
 
-        List<Node> nodes = new ArrayList<>(n);
+        List<Node> nodes = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             String[] input = br.readLine().split(" ");
             nodes.add(new Node(Integer.parseInt(input[0]), Integer.parseInt(input[1])));
