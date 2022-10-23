@@ -11,23 +11,19 @@ public class BOJ_1436 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        if (n == 1) {
-            bw.write("666\n");
-        } else {
-            int m = 666;
-            int c = 1;
-            while (c != n) {
-                while (true) {
-                    m++;
-                    String s = Integer.toString(m);
-                    if (s.contains("666")) {
-                        break;
-                    }
+        int m = 666;
+        int c = 1;
+        while (c != n) {
+            while (true) {
+                m++;
+                String s = Integer.toString(m);
+                if (s.contains("666")) {
+                    break;
                 }
-                c++;
             }
-            bw.write(m + "\n");
+            c++;
         }
+        bw.write(m + "\n");
 
         bw.flush();
         bw.close();
